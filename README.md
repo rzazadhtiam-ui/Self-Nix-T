@@ -2,6 +2,14 @@
 
 > **Self Nix** — A powerful Telegram self-bot service powered by Nix Coin.
 
+## 🧑‍💻 Developer
+
+**Tiam**
+
+Creator and developer of Self Nix.
+
+- Telegram: [@asta_tiam](https://t.me/asta_tiam)
+
 ---
 
 ## 👑 Owner
@@ -54,13 +62,14 @@ For custom purchases:
 - **1–999 Coins:** `100 Toman` per Coin
 - **1,000+ Coins:** `80 Toman` per Coin
 
-### Examples
+# 📊 Coin System
 
-```text
-100 Coins   → 10,000 Toman
-500 Coins   → 50,000 Toman
-999 Coins   → 99,900 Toman
+| Nix Coins | Usage Time |
+|----------:|------------:|
+| 2 Coins | 1 Hour |
+| 24 Coins | 12 Hours |
+| 48 Coins | 24 Hours |
+| 336 Coins | 7 Days |
+| 1,440 Coins | 30 Days |
 
-1,000 Coins → 80,000 Toman
-2,000 Coins → 160,000 Toman
-5,000 Coins → 400,000 Toman
+

@@ -73,3 +73,12 @@ For custom purchases:
 | 1,440 Coins | 30 Days |
 
 
+---
+
+## 📖 Commands
+
+<p align="center">
+  <a href="./COMMANDS.md">
+    <img src="https://img.shields.io/badge/📖_View_Commands-COMMANDS.md-2ea44f?style=for-the-badge" alt="View Commands">
+  </a>
+</p>

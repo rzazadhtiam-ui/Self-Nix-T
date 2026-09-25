@@ -1,486 +1,132 @@
 # 🤖 Self Nix — Commands
 
-> Complete public command documentation for Self Nix.
+**🌐 Language / زبان:** [فارسی](#-راهنمای-دستورات-فارسی) · [English](#-command-guide-english)
 
 ---
 
-## 📚 Table of Contents
+<a id="-راهنمای-دستورات-فارسی"></a>
+# 📘 راهنمای دستورات (فارسی)
 
-- [🚀 Getting Started](#-getting-started)
-- [📖 Command Structure](#-command-structure)
-- [🧩 Parameters & Arguments](#-parameters--arguments)
-- [👤 Account](#-account)
-  - [موجودی / Balance](#1-موجودی--balance)
-  - [پروفایل / Profile](#2-پروفایل--profile)
-  - [انتقال سکه / Transfer](#3-انتقال-سکه--transfer)
-  - [پنل / Panel](#4-پنل--panel)
-  - [روزانه / Daily](#5-روزانه--daily)
-  - [سطح من / Level](#6-سطح-من--level)
-- [🪙 Nix Coin](#-nix-coin)
-- [🎮 Games](#-games)
-  - [دوز 20](#-دوز-20)
-  - [سنگچی 20](#-سنگچی-20)
-  - [مین روب 20](#-مین-روب-20)
-  - [بازی 20](#-بازی-20)
-- [🏆 Statistics & Leaderboards](#-statistics--leaderboards)
-  - [آمار سکه](#-آمار-سکه--coin-leaderboard)
-  - [آمار برد](#-آمار-برد--wins-leaderboard)
-- [🔐 Administration](#-administration)
-- [⚠️ Common Errors](#️-common-errors)
-- [💡 Notes](#-notes)
-- [📋 Command Reference](#-command-reference)
+مستندات کامل دستورات ربات Self Nix — شامل دستورات حساب کاربری، سکه‌ها، بازی‌ها و رتبه‌بندی‌ها.
+
+## 📚 فهرست مطالب
+
+- [شروع کار](#-شروع-کار)
+- [ساختار دستورات](#-ساختار-دستورات)
+- [دستورات حساب کاربری](#-دستورات-حساب-کاربری)
+- [نیکس کوین](#-نیکس-کوین)
+- [بازی‌ها](#-بازیها)
+- [آمار و رتبه‌بندی](#-آمار-و-رتبهبندی)
+- [مدیریت](#-مدیریت)
+- [خطاهای رایج](#️-خطاهای-رایج)
+- [نکات مهم](#-نکات-مهم)
+- [جدول مرجع سریع](#-جدول-مرجع-سریع)
 
 ---
 
-# 🚀 Getting Started
+## 🚀 شروع کار
 
-Self Nix provides a collection of Telegram commands for managing account information, Nix Coin, Level progress, Daily rewards, games, and leaderboards.
+هر دستور را می‌توان به سه شکل اجرا کرد:
 
-Commands can be entered using their documented Persian or English form.
+- **فارسی** — مثال: `موجودی`
+- **English** — مثال: `balance`
+- **Slash Command** — مثال: `/balance`
 
-Where supported, commands can also be used with Telegram's `/` Slash Command format.
+هر سه روش عملکرد یکسانی دارند و بسته به ترجیح کاربر قابل استفاده‌اند.
 
-### Basic Examples
+---
 
+## 📖 ساختار دستورات
+
+### بدون پارامتر
 ```text
-موجودی
-
-balance
-
-/balance
-
-All three forms above refer to the Balance command.
-
-Commands that require parameters must be written according to their documented syntax.
-
-For example:
-
-transfer <user> <amount>
-
-must be converted into a real command by replacing the placeholders:
-
-transfer 123 50
-
-
----
-
-📖 Command Structure
-
-Commands can be divided into two main groups:
-
-1. Commands without parameters
-
-
-2. Commands with parameters
-
-
-
-
----
-
-1. Commands Without Parameters
-
-A command without parameters only requires the command itself.
-
-Syntax
-
 <command>
-
-Example
-
+```
+مثال:
+```text
 balance
-
-Slash form:
-
 /balance
+```
 
-There is no additional value after the command.
-
-
----
-
-2. Commands With One Parameter
-
-A command may require one additional value.
-
-Syntax
-
+### یک پارامتر
+```text
 <command> <parameter>
+```
 
-<parameter> is a placeholder and must be replaced with the required value.
-
-Example
-
-<command> 123
-
-Here:
-
-<parameter>
-
-has been replaced by:
-
-123
-
-
----
-
-3. Commands With Multiple Parameters
-
-A command can require multiple values.
-
-Syntax
-
+### چند پارامتر
+```text
 <command> <parameter_1> <parameter_2>
-
-Example:
-
-transfer <user> <amount>
-
-Real usage:
-
+```
+مثال واقعی:
+```text
 transfer 123 50
-
-Slash usage:
-
 /transfer 123 50
+```
 
-In this example:
+| نماد | توضیح |
+|---|---|
+| `<user>` | کاربر مقصد (بر اساس ID، Username یا Reply) |
+| `<amount>` | مقدار عددی (Nix Coin) |
+| `<parameter>` | مقدار جایگزین‌شدنی |
+| `/` | پیشوند Slash Command |
+| `@username` | ارجاع به کاربر با نام کاربری |
 
-123
-
-is the user parameter and:
-
-50
-
-is the amount parameter.
-
-
----
-
-🧩 Parameters & Arguments
-
-Placeholder Syntax
-
-Values written between < and > are placeholders.
-
-They are not meant to be typed literally.
-
-For example:
-
-transfer <user> <amount>
-
-means that the user must replace both placeholders with actual values.
-
-Example:
-
-transfer 123 50
-
-Mapping:
-
-<user>   → 123
-<amount> → 50
-
+**قوانین مهم Syntax:**
+- علائم `< >` بخشی از Placeholder هستند و نباید عیناً وارد شوند.
+- ترتیب پارامترها مهم است و نباید جابه‌جا شود.
+- بین Command و هر Parameter باید فاصله وجود داشته باشد.
+- مقادیر عددی باید عدد معتبر باشند.
+- `@username` فقط در دستوراتی که از آن پشتیبانی می‌کنند قابل استفاده است.
+- Reply فقط در مواردی که مستند شده پشتیبانی می‌شود (مانند `transfer`).
 
 ---
 
-Command Syntax Reference
-
-Symbol	Meaning	Example
-
-<user>	User target	123456789
-<amount>	Numeric amount	50
-<parameter>	Required input value	value
-/	Telegram Slash Command prefix	/balance
-@username	Telegram username target where supported	@username
-
-
-
----
-
-📌 Parameter Rules
-
-1. Spaces Between Command and Parameters
-
-A space must separate the command from its parameters.
-
-Correct:
-
-transfer 123 50
-
-Incorrect:
-
-transfer12350
-
-The command parser must be able to distinguish the command from each argument.
-
-
----
-
-2. Parameter Order
-
-Parameters must be provided in the order specified by the command syntax.
-
-For:
-
-transfer <user> <amount>
-
-the first value represents the user and the second value represents the amount.
-
-Correct:
-
-transfer 123 50
-
-The following interpretation is used:
-
-123 → user
-50  → amount
-
-
----
-
-3. Numeric Parameters
-
-When a parameter is documented as a numeric value, it must be provided as a number.
-
-Correct:
-
-transfer 123 50
-
-Incorrect:
-
-transfer 123 fifty
-
-
----
-
-4. Username Parameters
-
-Where username targeting is supported, a Telegram username can be represented using @.
-
-Example:
-
-@username
-
-The exact target formats supported by a command are defined in that command's documentation.
-
-
----
-
-5. Reply-Based Targeting
-
-Some commands may support selecting a user by replying to their Telegram message.
-
-Reply-based usage should only be considered supported where it is explicitly documented for the command.
-
-
----
-
-6. Required Parameters
-
-If a parameter is required, it must be provided.
-
-For example:
-
-transfer <user> <amount>
-
-requires both:
-
-<user>
-
-and:
-
-<amount>
-
-Therefore:
-
-transfer 123
-
-is incomplete because the amount is missing.
-
-
----
-
-7. Placeholder Values Must Be Replaced
-
-Incorrect:
-
-transfer <user> <amount>
-
-Correct:
-
-transfer 123 50
-
-The placeholder notation is used only to describe the command structure.
-
-
----
-
-👤 Account
-
-Account commands provide access to account-related information and features.
-
-
----
-
-1. 💰 موجودی / Balance
-
-🇮🇷 فارسی
-
-موجودی
-
-🇬🇧 English
-
-balance
-
-/ Slash
-
-/balance
-
-🎯 کاربرد
-
-دستور موجودی برای نمایش موجودی فعلی Nix Coin کاربر استفاده می‌شود.
-
-این دستور اطلاعات مربوط به موجودی فعلی کاربر و ارزش آن را نمایش می‌دهد.
-
-🧩 Syntax
-
-موجودی
-
-balance
-
-/balance
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-🧪 Examples
-
-موجودی
-
-balance
-
-/balance
-
-
----
-
-2. 👤 پروفایل / Profile
-
-🇮🇷 فارسی
-
-پروفایل
-حساب کاربری
-
-🇬🇧 English
-
-profile
-
-/ Slash
-
-/profile
-
-🎯 کاربرد
-
-دستور profile برای نمایش اطلاعات حساب Telegram و اطلاعات مرتبط با حساب Self Nix استفاده می‌شود.
-
-اطلاعات پروفایل و تصویر کاربر نیز در این بخش نمایش داده می‌شود.
-
-🧩 Syntax
-
-پروفایل
-
-حساب کاربری
-
-profile
-
-/profile
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-🧪 Examples
-
-پروفایل
-
-حساب کاربری
-
-profile
-
-/profile
-
-
----
-
-3. 💸 انتقال سکه / Transfer
-
-🇮🇷 فارسی
-
-انتقال
-
-🇬🇧 English
-
-transfer
-
-/ Slash
-
-/transfer
-
-🎯 کاربرد
-
-دستور transfer برای انتقال Nix Coin از موجودی کاربر به یک کاربر دیگر استفاده می‌شود.
-
-برای انتقال باید کاربر دریافت‌کننده و مقدار Nix Coin مشخص شود.
-
-🧩 Syntax
-
-انتقال <user> <amount>
-
-transfer <user> <amount>
-
-/transfer <user> <amount>
-
-🔢 Parameters
-
-Parameter	Type	Description
-
-<user>	User	کاربر دریافت‌کننده
-<amount>	Number	مقدار Nix Coin برای انتقال
-
-
-👤 User
-
-پارامتر <user> مشخص می‌کند Nix Coin برای چه کاربری ارسال شود.
-
-کاربر دریافت‌کننده می‌تواند بر اساس شناسه یا username مشخص شود و در موارد پشتیبانی‌شده می‌تواند از طریق Reply نیز انتخاب شود.
-
-🪙 Amount
-
-پارامتر <amount> تعداد Nix Coin موردنظر برای انتقال را مشخص می‌کند.
-
-این مقدار باید به‌صورت عدد وارد شود.
-
-💳 Transfer Fee
-
-انتقال Nix Coin دارای:
-
-10%
-
-کارمزد انتقال است.
-
-بنابراین مبلغ ارسال‌شده، کارمزد و مبلغ نهایی دریافتی می‌توانند متفاوت باشند.
-
-🧪 Examples
-
-انتقال 123 50
-
-transfer 123 50
-
-/transfer 123 50
-
-📤 Example Output
-
+## 👤 دستورات حساب کاربری
+
+### 1. 💰 موجودی / Balance
+
+| | |
+|---|---|
+| فارسی | `موجودی` |
+| English | `balance` |
+| Slash | `/balance` |
+| کاربرد | نمایش موجودی فعلی Nix Coin |
+| Syntax | `balance` |
+| Parameters | ندارد |
+
+### 2. 👤 پروفایل / Profile
+
+| | |
+|---|---|
+| فارسی | `پروفایل` |
+| English | `profile` |
+| Slash | `/profile` |
+| کاربرد | نمایش اطلاعات حساب کاربری |
+| Syntax | `profile` |
+| Parameters | ندارد |
+
+### 3. 💸 انتقال سکه / Transfer
+
+| | |
+|---|---|
+| فارسی | `انتقال <user> <amount>` |
+| English | `transfer <user> <amount>` |
+| Slash | `/transfer <user> <amount>` |
+| کاربرد | انتقال Nix Coin به کاربر دیگر |
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|---|---|---|
+| `<user>` | User | کاربر دریافت‌کننده |
+| `<amount>` | Number | مقدار Nix Coin برای انتقال |
+
+کاربر مقصد می‌تواند بر اساس **ID**، **Username** یا در موارد پشتیبانی‌شده از طریق **Reply** مشخص شود.
+
+**کارمزد انتقال:** `10%`
+
+**Example Output:**
+```text
 💸 انتقال سکه انجام شد
 
 👤 دریافت کننده: کاربر
@@ -489,688 +135,525 @@ transfer 123 50
 📥 مبلغ دریافتی: 10
 ♾️ موجودی شما: نامحدود
 📅 تاریخ: 2026-09-25 16:47:15
-
-
----
-
-4. 🎛️ پنل / Panel
-
-🇮🇷 فارسی
-
-پنل
-
-🇬🇧 English
-
-panel
-
-/ Slash
-
-/panel
-
-🎯 کاربرد
-
-دستور panel برای باز کردن پنل اصلی Self Nix استفاده می‌شود.
-
-این پنل دسترسی سریع به قابلیت‌های حساب را فراهم می‌کند.
-
-🧩 Syntax
-
-پنل
-
-panel
-
-/panel
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-🧪 Examples
-
-پنل
-
-panel
-
-/panel
-
-
----
-
-5. 🎁 روزانه / Daily
-
-🇮🇷 فارسی
-
-روزانه
-
-🇬🇧 English
-
-daily
-
-/ Slash
-
-/daily
-
-🎯 کاربرد
-
-دستور daily برای استفاده از قابلیت Daily و دریافت پاداش روزانه استفاده می‌شود.
-
-دریافت پاداش به واجد شرایط بودن کاربر بستگی دارد.
-
-🧩 Syntax
-
-روزانه
-
-daily
-
-/daily
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-🧪 Examples
-
-روزانه
-
-daily
-
-/daily
-
-
----
-
-6. 🏅 سطح من / Level
-
-🇮🇷 فارسی
-
-سطح من
-
-🇬🇧 English
-
-level
-
-/ Slash
-
-/level
-
-🎯 کاربرد
-
-دستور level برای مشاهده وضعیت Level و پیشرفت کاربر استفاده می‌شود.
-
-اطلاعات اصلی این بخش شامل موارد زیر است:
-
-Level فعلی
-
-XP فعلی
-
-مقدار XP موردنیاز برای Level بعدی
-
-جایزه بعدی
-
-اطلاعات مرتبط با پیشرفت کاربر
-
-
-🧩 Syntax
-
-سطح من
-
-level
-
-/level
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-🧪 Example
-
-سطح من
-
-یا:
-
-level
-
-📤 Example Information
-
+```
+
+### 4. 🎛️ پنل / Panel
+
+| | |
+|---|---|
+| فارسی | `پنل` |
+| English | `panel` |
+| Slash | `/panel` |
+| کاربرد | دسترسی به پنل کاربری |
+| Syntax | `panel` |
+| Parameters | ندارد |
+
+### 5. 🎁 روزانه / Daily
+
+| | |
+|---|---|
+| فارسی | `روزانه` |
+| English | `daily` |
+| Slash | `/daily` |
+| کاربرد | دریافت جایزه روزانه |
+| Syntax | `daily` |
+| Parameters | ندارد |
+
+### 6. 🏅 سطح من / Level
+
+| | |
+|---|---|
+| فارسی | `سطح من` |
+| English | `level` |
+| Slash | `/level` |
+| کاربرد | نمایش سطح، XP و پیشرفت حساب |
+| Syntax | `level` |
+| Parameters | ندارد |
+
+نمایش شامل:
+- Level فعلی
+- XP فعلی
+- XP موردنیاز برای Level بعدی
+- جایزه Level بعدی
+
+در صورت نمایش، آمار حساب می‌تواند شامل موارد زیر باشد: گردش مالی، سکه خریداری‌شده، مبلغ خرید سکه، شارژ کیف پول، تعداد کانفیگ، حجم کانفیگ، تمدید، دعوت موفق، بازی ثبت‌شده، موجودی سکه، کیف پول.
+
+**Example:**
+```text
 🏅 Level: 1
 ⭐ XP: 0
 
 ⬆️ تا Level 2: 500 XP
 🎁 جایزه بعدی: 🪙 10 سکه
-
-📊 Account Statistics
-
-ممکن است اطلاعات آماری مرتبط با حساب نیز در این بخش نمایش داده شود.
-
-این اطلاعات می‌تواند شامل موارد زیر باشد:
-
-گردش مالی
-
-سکه خریداری‌شده
-
-مبلغ خرید سکه
-
-شارژ کیف پول
-
-تعداد کانفیگ
-
-حجم کانفیگ
-
-تمدید
-
-دعوت موفق
-
-بازی ثبت‌شده
-
-موجودی سکه
-
-کیف پول
-
-
+```
 
 ---
 
-🪙 Nix Coin
+## 🪙 نیکس کوین
 
-Nix Coin ارز داخلی Self Nix است.
+واحد پولی داخلی ربات که برای شارژ، ورود به بازی‌ها و انتقال بین کاربران استفاده می‌شود.
 
-Nix Coin در بخش‌های مختلف سیستم، از جمله برخی قابلیت‌های بازی، مورد استفاده قرار می‌گیرد.
-
-⏱️ Nix Coin Usage Rate
-
-نرخ استفاده:
-
-2 Nix Coins = 1 Hour
-
-معادل‌های تعریف‌شده:
-
-Duration	Nix Coins
-
-1 Hour	2
-12 Hours	24
-24 Hours	48
-7 Days	336
-30 Days	1440
-
-
-Quick Reference
-
-2 Coins   = 1 Hour
-24 Coins  = 12 Hours
-48 Coins  = 24 Hours
-336 Coins = 7 Days
-1440 Coins = 30 Days
-
+| Duration | Nix Coins |
+|---|---|
+| 1 Hour | 2 |
+| 12 Hours | 24 |
+| 24 Hours | 48 |
+| 7 Days | 336 |
+| 30 Days | 1440 |
 
 ---
 
-🎮 Games
+## 🎮 بازی‌ها
 
-Self Nix دارای بازی‌های دو نفره است.
+### 🎯 دوز 20
 
-هر بازی قوانین و هزینه ورود مخصوص خود را دارد.
+| | |
+|---|---|
+| Players | 2 |
+| Entry Cost | 20 Nix Coin |
+| هدف | ساخت یک خط سه‌تایی (مشابه Tic-Tac-Toe) |
 
+### ✊ سنگچی 20
 
----
+| | |
+|---|---|
+| Players | 2 |
+| Entry Cost | 20 Nix Coin |
+| نوع | سنگ‌کاغذ‌قیچی (Rock-Paper-Scissors) |
+| Rounds | 1 / 3 / 5 |
 
-🎯 دوز 20
+انتخاب حرکت از طریق Game Panel انجام می‌شود؛ بازیکنی که راند بیشتری ببرد برنده است.
 
-بازی دو نفره شبیه Tic-Tac-Toe.
+### 💣 مین روب 20
 
-👥 Players
+| | |
+|---|---|
+| Players | 2 |
+| Mines | 11 |
+| Entry Cost | 20 Nix Coin |
 
-2 Players
+بازیکنان مین‌ها را پیدا می‌کنند؛ هر مین پیدا‌شده می‌تواند فرصت ادامه بازی ایجاد کند. بازیکنی که مین بیشتری پیدا کند برنده است.
 
-🪙 Entry Cost
+### 🎲 بازی 20
 
-20 Nix Coin
-
-🎯 هدف بازی
-
-هدف بازی ساختن یک خط سه‌تایی است.
-
-📋 مشخصات
-
-Feature	Value
-
-Players	2
-Entry Cost	20 Nix Coin
-Goal	ساخت یک خط سه‌تایی
-
-
-
----
-
-✊ سنگچی 20
-
-بازی دو نفره Rock-Paper-Scissors.
-
-👥 Players
-
-2 Players
-
-🪙 Entry Cost
-
-20 Nix Coin
-
-🎮 انتخاب حرکت
-
-حرکت بازیکنان از طریق پنل بازی انتخاب می‌شود.
-
-🔄 تعداد راند
-
-بازیکنان می‌توانند یکی از حالت‌های زیر را انتخاب کنند:
-
-1 Round
-3 Rounds
-5 Rounds
-
-🏆 تعیین برنده
-
-بازیکنی که راندهای بیشتری را برنده شود، برنده بازی خواهد بود.
-
-📋 مشخصات
-
-Feature	Value
-
-Players	2
-Entry Cost	20 Nix Coin
-Game Type	Rock-Paper-Scissors
-Rounds	1 / 3 / 5
-Move Selection	Game Panel
-
-
-
----
-
-💣 مین روب 20
-
-بازی دو نفره به سبک Minesweeper.
-
-👥 Players
-
-2 Players
-
-💣 Mines
-
-11 Mines
-
-🪙 Entry Cost
-
-20 Nix Coin
-
-🎯 نحوه بازی
-
-بازیکنان در جریان بازی مین‌ها را پیدا می‌کنند.
-
-هر مین پیداشده می‌تواند فرصت ادامه بازی ایجاد کند.
-
-🏆 تعیین برنده
-
-بازیکنی که تعداد بیشتری مین پیدا کند، برنده بازی است.
-
-📋 مشخصات
-
-Feature	Value
-
-Players	2
-Mines	11
-Entry Cost	20 Nix Coin
-Game Type	Minesweeper-style
-
-
-
----
-
-🎲 بازی 20
-
-یک بازی دو نفره سریع.
-
-👥 Players
-
-2 Players
-
-🪙 Entry Cost
-
-20 Nix Coin
-
-🎯 نحوه تعیین برنده
+| | |
+|---|---|
+| Players | 2 |
+| Entry Cost | 20 Nix Coin |
 
 پس از ورود بازیکن دوم، سیستم به‌صورت خودکار برنده را مشخص می‌کند.
 
-📋 مشخصات
+---
 
-Feature	Value
+## 🏆 آمار و رتبه‌بندی
 
-Players	2
-Entry Cost	20 Nix Coin
-Result	Automatically determined after the second player joins
+### 🪙 آمار سکه / Coin Leaderboard
 
+| | |
+|---|---|
+| فارسی | `آمار سکه` |
+| English | `leaderboard` |
+| Slash | `/leaderboard` |
+| کاربرد | نمایش Top 10 کاربران بر اساس Nix Coin |
+| Parameters | ندارد |
 
+### 🏆 آمار برد / Wins Leaderboard
+
+| | |
+|---|---|
+| فارسی | `آمار برد` |
+| English | `leaderboard_wins` |
+| Slash | `/leaderboard_wins` |
+| کاربرد | نمایش Top 10 کاربران بر اساس تعداد بردهای ثبت‌شده در بازی‌ها |
+| Parameters | ندارد |
 
 ---
 
-🏆 Statistics & Leaderboards
-
-بخش Statistics شامل رتبه‌بندی کاربران بر اساس اطلاعات ثبت‌شده در Self Nix است.
-
-
----
-
-🪙 آمار سکه / Coin Leaderboard
-
-🇮🇷 فارسی
-
-آمار سکه
-
-🇬🇧 English
-
-leaderboard
-
-/ Slash
-
-/leaderboard
-
-🎯 کاربرد
-
-نمایش Top 10 کاربران بر اساس مقدار Nix Coin.
-
-🧩 Syntax
-
-آمار سکه
-
-leaderboard
-
-/leaderboard
-
-📊 Result
-
-نتیجه شامل رتبه‌بندی Top 10 کاربران بر اساس مقدار Nix Coin است.
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-
----
-
-🏆 آمار برد / Wins Leaderboard
-
-🇮🇷 فارسی
-
-آمار برد
-
-🇬🇧 English
-
-leaderboard_wins
-
-/ Slash
-
-/leaderboard_wins
-
-🎯 کاربرد
-
-نمایش Top 10 کاربران بر اساس تعداد بردهای ثبت‌شده در بازی‌ها.
-
-🧩 Syntax
-
-آمار برد
-
-leaderboard_wins
-
-/leaderboard_wins
-
-📊 Result
-
-نتیجه شامل رتبه‌بندی Top 10 کاربران بر اساس تعداد بردهای ثبت‌شده در بازی‌ها است.
-
-🔢 Parameters
-
-این دستور پارامتر اضافی ندارد.
-
-
----
-
-🔐 Administration
+## 🔐 مدیریت
 
 Coming Later
 
-Administration documentation will be added later.
-
-No administration command is documented in this version.
-
-
 ---
 
-⚠️ Common Errors
+## ⚠️ خطاهای رایج
 
-Missing Required Parameters
-
-اگر دستوری به پارامتر نیاز داشته باشد و پارامتر موردنیاز ارسال نشود، دستور ناقص خواهد بود.
-
-Syntax
-
-transfer <user> <amount>
-
-Incomplete
-
+**Missing Required Parameters**
+```text
 transfer 123
-
-در این مثال مقدار <amount> وارد نشده است.
-
-Correct
-
+```
+Syntax صحیح:
+```text
 transfer 123 50
+```
 
-
----
-
-Invalid Numeric Value
-
-پارامترهایی که به‌عنوان مقدار عددی تعریف شده‌اند باید به‌صورت عدد وارد شوند.
-
-Correct
-
-transfer 123 50
-
-Incorrect
-
+**Invalid Numeric Value**
+```text
 transfer 123 fifty
+```
 
+**Incorrect Parameter Order**
+ترتیب صحیح باید مطابق `transfer <user> <amount>` باشد.
 
----
-
-Incorrect Parameter Order
-
-ترتیب پارامترها باید مطابق Syntax مستندشده باشد.
-
-Syntax
-
-transfer <user> <amount>
-
-Correct
-
-transfer 123 50
-
-در این مثال:
-
-123 → User
-50 → Amount
-
-
----
-
-Incorrect Spacing
-
-پارامترها باید با فاصله از command جدا شوند.
-
-Correct
-
-transfer 123 50
-
-Incorrect
-
+**Incorrect Spacing**
+```text
 transfer12350
+```
 
-
----
-
-Literal Placeholders
-
-مقادیر داخل < > فقط برای نمایش ساختار command هستند.
-
-Incorrect
-
-transfer <user> <amount>
-
-Correct
-
-transfer 123 50
-
+**Literal Placeholders**
+`transfer <user> <amount>` یک Syntax نمونه است و باید با مقادیر واقعی جایگزین شود.
 
 ---
 
-Unsupported Syntax
+## 💡 نکات مهم
 
-هر command فقط syntaxهایی را پشتیبانی‌شده در نظر می‌گیرد که در مستندات همان command ذکر شده باشند.
-
-نباید syntax جدیدی بر اساس حدس ساخته شود.
-
-
----
-
-💡 Notes
-
-COMMANDS.md فقط مستندات عمومی Self Nix را ارائه می‌کند.
-
-هیچ Token، API Key، اطلاعات دیتابیس یا Source Code خصوصی در این مستندات قرار نمی‌گیرد.
-
-دستورات فارسی و انگلیسی در کنار Slash Command مربوط به خود نمایش داده شده‌اند.
-
-/ نشان‌دهنده Telegram Slash Command است.
-
-مقادیر داخل < > باید با مقدار واقعی جایگزین شوند.
-
-ترتیب پارامترها مهم است.
-
-فاصله بین command و پارامترها مهم است.
-
-مقادیر عددی باید به‌صورت عدد وارد شوند.
-
-@username فقط در مواردی قابل استفاده است که username به‌عنوان target پشتیبانی شود.
-
-Reply فقط در commandهایی قابل استفاده است که از Reply پشتیبانی می‌کنند.
-
-قابلیت‌هایی که در این فایل مستند نشده‌اند، نباید به‌عنوان قابلیت رسمی Self Nix در نظر گرفته شوند.
-
-بخش Administration فعلاً مستند نشده و فقط به‌صورت Coming Later مشخص شده است.
-
-مقادیر و اطلاعات نمایش داده‌شده در مثال‌ها صرفاً نمونه‌ای برای توضیح ساختار خروجی هستند.
-
-
+- این فایل فقط مستندات عمومی ربات است.
+- اطلاعات خصوصی (Token، API Key، Database و...) در این فایل قرار نمی‌گیرد.
+- `<...>` باید همیشه با مقدار واقعی جایگزین شود.
+- ترتیب پارامترها در تمام دستورات مهم است.
+- قابلیت‌هایی که در این فایل مستند نشده‌اند، رسمی محسوب نمی‌شوند.
+- بخش Administration فعلاً `Coming Later` است.
 
 ---
 
-📋 Command Reference
+## 📋 جدول مرجع سریع
 
-Feature	فارسی	English	Slash
+| Feature | فارسی | English | Slash |
+|---|---|---|---|
+| 💰 موجودی | موجودی | `balance` | `/balance` |
+| 👤 پروفایل | پروفایل / حساب کاربری | `profile` | `/profile` |
+| 💸 انتقال | انتقال | `transfer` | `/transfer` |
+| 🎛️ پنل | پنل | `panel` | `/panel` |
+| 🎁 روزانه | روزانه | `daily` | `/daily` |
+| 🏅 سطح | سطح من | `level` | `/level` |
+| 🪙 آمار سکه | آمار سکه | `leaderboard` | `/leaderboard` |
+| 🏆 آمار برد | آمار برد | `leaderboard_wins` | `/leaderboard_wins` |
 
-💰 موجودی	موجودی	balance	/balance
-👤 پروفایل	پروفایل / حساب کاربری	profile	/profile
-💸 انتقال	انتقال	transfer	/transfer
-🎛️ پنل	پنل	panel	/panel
-🎁 روزانه	روزانه	daily	/daily
-🏅 سطح	سطح من	level	/level
-🪙 آمار سکه	آمار سکه	leaderboard	/leaderboard
-🏆 آمار برد	آمار برد	leaderboard_wins	/leaderboard_wins
-
-
+[⬆ Back to top / بازگشت به بالا](#-self-nix--commands)
 
 ---
 
-📌 Quick Syntax Reference
+<a id="-command-guide-english"></a>
+# 📘 Command Guide (English)
 
-No Parameters
+Complete command documentation for the Self Nix bot — covering account commands, coins, games, and leaderboards.
 
+## 📚 Table of Contents
+
+- [Getting Started](#getting-started)
+- [Command Syntax](#command-syntax)
+- [Account Commands](#account-commands)
+- [Nix Coin](#nix-coin)
+- [Games](#games)
+- [Statistics & Leaderboards](#statistics--leaderboards)
+- [Administration](#administration)
+- [Common Errors](#common-errors)
+- [Notes](#notes)
+- [Command Reference](#command-reference)
+
+---
+
+## Getting Started
+
+Every command can be run in three equivalent forms:
+
+- **Persian** — e.g. `موجودی`
+- **English** — e.g. `balance`
+- **Slash Command** — e.g. `/balance`
+
+All three forms behave identically; use whichever fits your workflow.
+
+---
+
+## Command Syntax
+
+### No parameters
+```text
 <command>
-
+```
 Example:
-
+```text
 balance
-
-Slash:
-
 /balance
+```
 
-
----
-
-One Parameter
-
+### One parameter
+```text
 <command> <parameter>
+```
 
-The placeholder must be replaced with the actual value.
-
-
----
-
-Multiple Parameters
-
+### Multiple parameters
+```text
 <command> <parameter_1> <parameter_2>
-
-Example:
-
-transfer <user> <amount>
-
-Real command:
-
+```
+Real example:
+```text
 transfer 123 50
-
-Slash command:
-
 /transfer 123 50
+```
 
+| Symbol | Description |
+|---|---|
+| `<user>` | Target user (by ID, username, or reply) |
+| `<amount>` | Numeric value (Nix Coin) |
+| `<parameter>` | Generic placeholder value |
+| `/` | Slash command prefix |
+| `@username` | Reference a user by username |
 
----
-
-📖 Complete Command List
-
-موجودی
-balance
-/balance
-
-پروفایل
-حساب کاربری
-profile
-/profile
-
-انتقال <user> <amount>
-transfer <user> <amount>
-/transfer <user> <amount>
-
-پنل
-panel
-/panel
-
-روزانه
-daily
-/daily
-
-سطح من
-level
-/level
-
-آمار سکه
-leaderboard
-/leaderboard
-
-آمار برد
-leaderboard_wins
-/leaderboard_wins
-
+**Key Syntax Rules:**
+- `< >` marks a placeholder — do not type the angle brackets literally.
+- Parameter order matters and must not be changed.
+- A space is required between the command and each parameter.
+- Numeric values must be valid numbers.
+- `@username` only works on commands that explicitly support it.
+- Reply is only supported where documented (e.g. `transfer`).
 
 ---
 
-🤖 Self Nix
+## Account Commands
 
-Public Command Documentation
+### 1. 💰 Balance
+
+| | |
+|---|---|
+| Persian | `موجودی` |
+| English | `balance` |
+| Slash | `/balance` |
+| Purpose | Shows current Nix Coin balance |
+| Syntax | `balance` |
+| Parameters | None |
+
+### 2. 👤 Profile
+
+| | |
+|---|---|
+| Persian | `پروفایل` |
+| English | `profile` |
+| Slash | `/profile` |
+| Purpose | Shows account information |
+| Syntax | `profile` |
+| Parameters | None |
+
+### 3. 💸 Transfer
+
+| | |
+|---|---|
+| Persian | `انتقال <user> <amount>` |
+| English | `transfer <user> <amount>` |
+| Slash | `/transfer <user> <amount>` |
+| Purpose | Transfers Nix Coin to another user |
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|---|---|---|
+| `<user>` | User | Recipient user |
+| `<amount>` | Number | Amount of Nix Coin to transfer |
+
+The recipient can be specified by **ID**, **username**, or, where supported, by **replying** to their message.
+
+**Transfer fee:** `10%`
+
+**Example Output:**
+```text
+💸 Transfer completed
+
+👤 Recipient: user
+📤 Amount sent: 11
+💳 Fee: 1
+📥 Amount received: 10
+♾️ Your balance: Unlimited
+📅 Date: 2026-09-25 16:47:15
+```
+
+### 4. 🎛️ Panel
+
+| | |
+|---|---|
+| Persian | `پنل` |
+| English | `panel` |
+| Slash | `/panel` |
+| Purpose | Access the user panel |
+| Syntax | `panel` |
+| Parameters | None |
+
+### 5. 🎁 Daily
+
+| | |
+|---|---|
+| Persian | `روزانه` |
+| English | `daily` |
+| Slash | `/daily` |
+| Purpose | Claim the daily reward |
+| Syntax | `daily` |
+| Parameters | None |
+
+### 6. 🏅 Level
+
+| | |
+|---|---|
+| Persian | `سطح من` |
+| English | `level` |
+| Slash | `/level` |
+| Purpose | Shows current level, XP, and progress |
+| Syntax | `level` |
+| Parameters | None |
+
+Displayed information includes:
+- Current level
+- Current XP
+- XP required for the next level
+- Next level's reward
+
+When shown, account statistics may include: financial turnover, coins purchased, coin purchase amount, wallet top-up, number of configs, config volume, renewals, successful referrals, recorded games, coin balance, wallet.
+
+**Example:**
+```text
+🏅 Level: 1
+⭐ XP: 0
+
+⬆️ To Level 2: 500 XP
+🎁 Next reward: 🪙 10 coins
+```
+
+---
+
+## Nix Coin
+
+The bot's internal currency, used for top-ups, joining games, and transfers between users.
+
+| Duration | Nix Coins |
+|---|---|
+| 1 Hour | 2 |
+| 12 Hours | 24 |
+| 24 Hours | 48 |
+| 7 Days | 336 |
+| 30 Days | 1440 |
+
+---
+
+## Games
+
+### 🎯 Tic-Tac-Toe 20
+
+| | |
+|---|---|
+| Players | 2 |
+| Entry Cost | 20 Nix Coin |
+| Objective | Get three in a row (Tic-Tac-Toe style) |
+
+### ✊ Rock-Paper-Scissors 20
+
+| | |
+|---|---|
+| Players | 2 |
+| Entry Cost | 20 Nix Coin |
+| Type | Rock-Paper-Scissors |
+| Rounds | 1 / 3 / 5 |
+
+Moves are selected via the Game Panel; the player who wins more rounds wins the match.
+
+### 💣 Minesweeper 20
+
+| | |
+|---|---|
+| Players | 2 |
+| Mines | 11 |
+| Entry Cost | 20 Nix Coin |
+
+Players search for mines; each mine found may create a chance to continue playing. The player who finds more mines wins.
+
+### 🎲 Game 20
+
+| | |
+|---|---|
+| Players | 2 |
+| Entry Cost | 20 Nix Coin |
+
+Once the second player joins, the system automatically determines the winner.
+
+---
+
+## Statistics & Leaderboards
+
+### 🪙 Coin Leaderboard
+
+| | |
+|---|---|
+| Persian | `آمار سکه` |
+| English | `leaderboard` |
+| Slash | `/leaderboard` |
+| Purpose | Shows the Top 10 users by Nix Coin balance |
+| Parameters | None |
+
+### 🏆 Wins Leaderboard
+
+| | |
+|---|---|
+| Persian | `آمار برد` |
+| English | `leaderboard_wins` |
+| Slash | `/leaderboard_wins` |
+| Purpose | Shows the Top 10 users by recorded game wins |
+| Parameters | None |
+
+---
+
+## Administration
+
+Coming Later
+
+---
+
+## Common Errors
+
+**Missing Required Parameters**
+```text
+transfer 123
+```
+Correct syntax:
+```text
+transfer 123 50
+```
+
+**Invalid Numeric Value**
+```text
+transfer 123 fifty
+```
+
+**Incorrect Parameter Order**
+Order must follow `transfer <user> <amount>`.
+
+**Incorrect Spacing**
+```text
+transfer12350
+```
+
+**Literal Placeholders**
+`transfer <user> <amount>` is a syntax template — replace it with real values.
+
+---
+
+## Notes
+
+- This file is public documentation only.
+- No private information (tokens, API keys, database details, etc.) is included.
+- `<...>` must always be replaced with an actual value.
+- Parameter order matters for every command.
+- Any capability not documented here is not an official feature.
+- The Administration section is currently `Coming Later`.
+
+---
+
+## Command Reference
+
+| Feature | Persian | English | Slash |
+|---|---|---|---|
+| 💰 Balance | موجودی | `balance` | `/balance` |
+| 👤 Profile | پروفایل / حساب کاربری | `profile` | `/profile` |
+| 💸 Transfer | انتقال | `transfer` | `/transfer` |
+| 🎛️ Panel | پنل | `panel` | `/panel` |
+| 🎁 Daily | روزانه | `daily` | `/daily` |
+| 🏅 Level | سطح من | `level` | `/level` |
+| 🪙 Coin Leaderboard | آمار سکه | `leaderboard` | `/leaderboard` |
+| 🏆 Wins Leaderboard | آمار برد | `leaderboard_wins` | `/leaderboard_wins` |
+
+[⬆ Back to top / بازگشت به بالا](#-self-nix--commands)

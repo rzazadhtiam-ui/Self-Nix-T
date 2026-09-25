@@ -79,6 +79,6 @@ For custom purchases:
 
 <p align="center">
   <a href="./COMMANDS.md">
-    <img src="https://img.shields.io/badge/📖_View_Commands-COMMANDS.md-2ea44f?style=for-the-badge" alt="View Commands">
+    <img src="https://img.shields.io/badge/📖_View_Commands-2ea44f?style=for-the-badge" alt="View Commands">
   </a>
 </p>

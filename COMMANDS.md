@@ -657,3 +657,12 @@ transfer12350
 | 🏆 Wins Leaderboard | آمار برد | `leaderboard_wins` | `/leaderboard_wins` |
 
 [⬆ Back to top / بازگشت به بالا](#-self-nix--commands)
+
+
+---
+
+<p align="center">
+  <a href="./README.md">
+    <img src="https://img.shields.io/badge/⬅️_Back_to_Home-2ea44f?style=for-the-badge" alt="Back to README">
+  </a>
+</p>

@@ -1,218 +1,362 @@
-# 🤖 Self Nix — Command Reference
+# 🤖 Self Nix — Commands
 
-> Complete documentation for the public commands and user-facing features of Self Nix.
-
----
-
-## 📚 Table of Contents
-
-- 🚀 [Getting Started](#-getting-started)
-  - [`/start`](#start)
-  - [`/help`](#help)
-- 👤 [Account](#-account)
-  - [`/level`](#level)
-  - [`/profile`](#profile)
-  - [`/balance`](#balance)
-  - [`/transfer`](#transfer)
-- 🪙 [Nix Coin](#-nix-coin)
-- 🎮 [Games](#-games)
-  - [Dōz 20](#-dōz-20)
-  - [Sangchi 20](#-sangchi-20)
-  - [Mine Rub 20](#-mine-rub-20)
-  - [Bāzi 20](#-bāzi-20)
-- 🏆 [Statistics](#-statistics)
-  - [Coin Ranking](#coin-ranking)
-  - [Win Ranking](#win-ranking)
-- 🔐 [Administration](#-administration)
+> مرجع کامل دستورات عمومی Self Nix  
+> این فایل نحوه استفاده از دستورات، نام فارسی و انگلیسی، پارامترها و نمونه‌های کاربردی را توضیح می‌دهد.
 
 ---
 
-# 🚀 Getting Started
+## 📚 فهرست مطالب
 
-## `/start`
+- [🚀 شروع کار](#-شروع-کار)
+- [📖 ساختار دستورات](#-ساختار-دستورات)
+- [🧩 پارامترها و ورودی‌ها](#-پارامترها-و-ورودیها)
+- [👤 حساب کاربری](#-حساب-کاربری)
+- [🪙 Nix Coin](#-nix-coin)
+- [🎮 بازی‌ها](#-بازیها)
+- [🏆 آمار و رتبه‌بندی](#-آمار-و-رتبهبندی)
+- [🔐 مدیریت](#-مدیریت)
+- [ℹ️ نکات مهم](#-نکات-مهم)
 
-Starts the Self Nix interface and opens the main user panel.
+---
 
-The main panel provides access to the core Self Nix services.
+# 🚀 شروع کار
 
-### Available Features
+Self Nix برای دسترسی سریع به امکانات اصلی، از دو نوع نام‌گذاری برای دستورات پشتیبانی می‌کند:
 
-- 🔐 Self activation
-- 🪙 Nix Coin purchase
-- 🌐 Subscription services
-- ⚙️ Self management
-- 👤 Account information
-- 🔗 Referral system
-- 🧪 One-day trial
-- 💬 Support and contact options
+- 🇮🇷 نام فارسی
+- 🇬🇧 نام انگلیسی
+- `/` + نام انگلیسی
 
-### Usage
+برای مثال، دستور موجودی را می‌توان به شکل‌های زیر اجرا کرد:
 
 ```text
-/start
+موجودی
+balance
+/balance
 
-Availability
-
-«"/start" is intended for private chat.»
-
----
-
-"/help"
-
-Opens the Self Nix help center.
-
-The help system provides information about the available features and user systems.
-
-Help Sections
-
-- 📖 Command Guide
-- 🔐 Self Activation Guide
-- 🏆 Level System
-- 🪙 Nix Coin System
-- 🎁 Rewards
-- 🎮 Game System
-- ⚙️ General Features
-
-Usage
-
-/help
+هر سه حالت به یک قابلیت مربوط هستند.
 
 ---
 
-👤 Account
+📖 ساختار دستورات
 
-"/level"
+🔹 انواع دستورات
 
-Displays the user's current Level, XP, progression, rewards, and account statistics.
+دستورات Self Nix به دو گروه اصلی تقسیم می‌شوند:
 
-Level Information
+1. دستورات بدون پارامتر
 
-The Level panel displays information such as:
+این دستورات فقط با نام دستور اجرا می‌شوند.
 
-Field| Description
-🏅 Level| Current user Level
-⭐ XP| Current experience points
-⬆️ Next Level| XP required to reach the next Level
-🎁 Next Reward| Reward available at the next Level
-📊 Progress| Current Level progression
+موجودی
+balance
+/balance
 
-Account Statistics
+در این حالت نیازی به وارد کردن مقدار دیگری نیست.
 
-The Level panel can also display:
+---
 
-- 💳 Registered transaction volume
-- 🪙 Purchased Nix Coins
-- 💵 Total amount spent on Coins
-- 💰 Wallet deposits
-- 🔐 Number of configurations
-- 📦 Configuration traffic
-- ♻️ Renewals
-- 👥 Successful referrals
-- 🎮 Recorded games
-- 🪙 Current Nix Coin balance
-- 💼 Wallet balance
+2. دستورات دارای پارامتر
 
-Rewards
+بعضی دستورات برای انجام عملیات به اطلاعات بیشتری نیاز دارند.
 
-Users can view the rewards associated with their Levels.
+ساختار کلی:
 
-The panel also displays previously received rewards when available.
+COMMAND PARAMETER_1 PARAMETER_2
 
-Example
+مثال:
 
-╭───────────────╮
-🏆 Level 𝐋u𝐜𝐲 22:37
-╰───────────────╯
+انتقال 123 50
+transfer 123 50
+/transfer 123 50
+
+در این مثال:
+
+123 = شناسه / هدف دریافت‌کننده
+50  = مقدار سکه
+
+---
+
+🧩 پارامترها و ورودی‌ها
+
+👤 شناسه کاربر
+
+در دستورهایی که با کاربر دیگری کار می‌کنند، گیرنده می‌تواند با شناسه یا نام کاربری مشخص شود.
+
+نمونه:
+
+transfer 123456789 50
+
+یا:
+
+transfer @username 50
+
+در برخی عملیات، امکان استفاده از Reply نیز وجود دارد.
+
+---
+
+🪙 مقدار سکه
+
+مقدار سکه باید به‌صورت عددی وارد شود.
+
+مثال:
+
+transfer 123 50
+
+در اینجا:
+
+123 = کاربر مقصد
+50  = تعداد سکه
+
+---
+
+📌 ترتیب پارامترها
+
+ترتیب پارامترها مهم است.
+
+فرمت:
+
+transfer <user> <amount>
+
+نمونه صحیح:
+
+transfer 123 50
+
+نمونه نادرست:
+
+transfer 50 123
+
+زیرا پارامتر اول گیرنده و پارامتر دوم مقدار سکه است.
+
+---
+
+📝 علامت‌های استفاده‌شده در راهنما
+
+در این مستند:
+
+<parameter>
+
+یعنی این مقدار باید توسط کاربر وارد شود.
+
+مثال:
+
+transfer <user> <amount>
+
+یعنی:
+
+transfer 123 50
+
+---
+
+👤 حساب کاربری
+
+📊 موجودی
+
+🇮🇷 فارسی
+
+موجودی
+
+🇬🇧 English
+
+balance
+
+"/" Slash
+
+/balance
+
+🎯 کاربرد
+
+نمایش موجودی فعلی Nix Coin کاربر.
+
+علاوه بر تعداد سکه، ارزش تقریبی موجودی بر اساس سیستم ارزش‌گذاری سکه نیز نمایش داده می‌شود.
+
+🧪 مثال
+
+موجودی
+
+یا:
+
+balance
+
+یا:
+
+/balance
+
+📤 خروجی
+
+اطلاعاتی مانند:
+
+🪙 موجودی سکه
+💰 ارزش موجودی
+
+نمایش داده می‌شود.
+
+---
+
+👤 پروفایل
+
+🇮🇷 فارسی
+
+پروفایل
+حساب کاربری
+
+🇬🇧 English
+
+profile
+
+"/" Slash
+
+/profile
+
+🎯 کاربرد
+
+نمایش اطلاعات حساب کاربر در Self Nix.
+
+این بخش اطلاعات عمومی حساب Telegram و اطلاعات مرتبط با حساب Self Nix را در یک پنل نمایش می‌دهد.
+
+🧪 مثال
+
+پروفایل
+
+یا:
+
+حساب کاربری
+
+یا:
+
+profile
+
+یا:
+
+/profile
+
+📋 اطلاعات قابل نمایش
+
+بسته به وضعیت حساب، اطلاعاتی مانند:
+
+👤 اطلاعات کاربر
+🆔 شناسه کاربری
+🪙 موجودی Nix Coin
+🏆 Level
+⭐ XP
+💼 اطلاعات حساب Self Nix
+🖼 تصویر پروفایل
+
+نمایش داده می‌شود.
+
+---
+
+🏆 Level
+
+🇮🇷 فارسی
+
+سطح من
+
+🇬🇧 English
+
+level
+
+"/" Slash
+
+/level
+
+🎯 کاربرد
+
+نمایش وضعیت پیشرفت کاربر در سیستم Level.
+
+این بخش برای مشاهده سطح فعلی، XP، میزان XP موردنیاز برای سطح بعدی و جوایز مربوط به Level استفاده می‌شود.
+
+📊 اطلاعات Level
+
+نمونه ساختار اطلاعات:
 
 🏅 Level: 1
 ⭐ XP: 0
 
 ⬆️ تا Level 2: 500 XP
 🎁 جایزه بعدی: 🪙 10 سکه
+
 ▱▱▱▱▱▱▱▱▱▱ 0%
 
-━━━━━━━━━━━━━━━━
-📊 آمار حساب
+🎁 جوایز
 
-💳 گردش مالی ثبت‌شده: 0 تومان
-🪙 سکه خریداری‌شده: 0
-💵 مبلغ خرید سکه: 0 تومان
-💰 شارژ کیف پول: 0 تومان
-🔐 تعداد کانفیگ: 0
-📦 حجم کانفیگ: 0 GB
-♻️ تمدید: 0
-👥 دعوت موفق: 0
-🎮 بازی ثبت‌شده: 0
-🪙 موجودی سکه: 0
-💼 کیف پول: 0 تومان
+در بخش Level می‌توان وضعیت جوایز مرتبط با سطح‌ها را مشاهده کرد.
 
-🎁 جوایز دریافت‌شده
-هنوز جایزه‌ای دریافت نشده
+📈 اطلاعات آماری
 
----
+ممکن است اطلاعات تکمیلی حساب نیز در پنل Level نمایش داده شود، مانند:
 
-"/profile"
-
-Displays the user's Telegram and Self Nix account information.
-
-Information
-
-Depending on the available account data, the profile may include:
-
-- 👤 Name
-- 🆔 Telegram ID
-- 🔗 Username
-- 🖼️ Profile picture
-- 📊 Self Nix account information
-
-Usage
-
-/profile
+💳 گردش مالی
+🪙 سکه خریداری‌شده
+💵 مبلغ خرید سکه
+💰 شارژ کیف پول
+🔐 تعداد کانفیگ
+📦 حجم کانفیگ
+♻️ تمدید
+👥 دعوت موفق
+🎮 بازی ثبت‌شده
+🪙 موجودی سکه
+💼 کیف پول
 
 ---
 
-"/balance"
+💸 انتقال سکه
 
-Displays the user's current Nix Coin balance.
+🇮🇷 فارسی
 
-The system can also display the approximate Toman value of the user's current Coin balance.
+انتقال <user> <amount>
 
-Example
+🇬🇧 English
 
-🪙 Nix Coins: 500
-💰 Approximate Value: 42,000 Toman
+transfer <user> <amount>
 
-Usage
+"/" Slash
 
-/balance
+/transfer <user> <amount>
 
----
+🎯 کاربرد
 
-"/transfer"
+انتقال Nix Coin از حساب فعلی به حساب کاربر دیگر.
 
-Transfers Nix Coins from one Self Nix user to another.
+🧩 ساختار
 
-Usage
+انتقال <کاربر> <مقدار>
 
-/transfer {ID | Username | Reply} {Amount}
+یا:
 
-Recipient Methods
+transfer <user> <amount>
 
-The recipient can be selected using:
+یا:
 
-- 🆔 Telegram ID
-- 👤 Username
-- 💬 Reply to the recipient's message
+/transfer <user> <amount>
 
-Transfer Fee
+🧪 مثال
 
-A 10% transaction fee is applied to Coin transfers.
+انتقال 123 50
 
-Example
+transfer 123 50
 
-/transfer @username 11
+/transfer 123 50
 
-Example Result
+👤 تعیین دریافت‌کننده
+
+دریافت‌کننده می‌تواند با شناسه کاربر یا نام کاربری مشخص شود و در موارد پشتیبانی‌شده می‌توان از Reply نیز استفاده کرد.
+
+مثال:
+
+transfer @username 50
+
+یا با Reply:
+
+transfer 50
+
+💳 کارمزد
+
+انتقال سکه دارای 10٪ کارمزد انتقال است.
+
+بنابراین مقدار ارسال‌شده و مقدار دریافتی می‌تواند متفاوت باشد.
+
+🧪 نمونه نتیجه
 
 💸 انتقال سکه انجام شد
 
@@ -225,174 +369,446 @@ Example Result
 
 ---
 
+🎛 پنل
+
+🇮🇷 فارسی
+
+پنل
+
+🇬🇧 English
+
+panel
+
+"/" Slash
+
+/panel
+
+🎯 کاربرد
+
+باز کردن پنل اصلی Self Nix برای دسترسی سریع به امکاناتی که برای حساب کاربر فعال هستند.
+
+🧪 مثال
+
+پنل
+
+panel
+
+/panel
+
+📌 نکته
+
+محتوای پنل می‌تواند بر اساس امکانات فعال حساب و سطح دسترسی کاربر متفاوت باشد.
+
+---
+
+🎁 روزانه
+
+🇮🇷 فارسی
+
+روزانه
+
+🇬🇧 English
+
+daily
+
+"/" Slash
+
+/daily
+
+🎯 کاربرد
+
+دسترسی به قابلیت Daily و دریافت پاداش روزانه در صورت واجد شرایط بودن.
+
+🧪 مثال
+
+روزانه
+
+یا:
+
+daily
+
+یا:
+
+/daily
+
+📌 نکته
+
+دریافت پاداش روزانه تابع وضعیت و زمان‌بندی سیستم Daily است.
+
+---
+
 🪙 Nix Coin
 
-Nix Coin is the internal currency used throughout Self Nix.
+Nix Coin ارز داخلی Self Nix است و در بخش‌های مختلف سیستم، از جمله بازی‌ها و امکانات مرتبط با حساب، مورد استفاده قرار می‌گیرد.
 
-Coin Balance
+⏳ نرخ استفاده
 
-Displays the user's current Nix Coin balance.
+2 Nix Coins = 1 Hour
 
-The system can also show the approximate monetary value of the balance.
+بنابراین:
 
-Coin Statistics
-
-Provides Coin-related statistics and rankings.
-
-Coin Transfer
-
-Allows users to transfer Nix Coins between Self Nix accounts.
-
-Transfer Fee
-
-10%
+24 Coins  = 12 Hours
+48 Coins  = 24 Hours
+336 Coins = 7 Days
+1440 Coins = 30 Days
 
 ---
 
-🎮 Games
+🎮 بازی‌ها
 
-Self Nix includes multiplayer games where Nix Coins can be used as wagers.
+Self Nix شامل چند بازی مبتنی بر Nix Coin است.
 
-Unless otherwise specified, the games in this section are designed for two players.
+بازی‌های فعلی:
 
----
+🎮 دوز 20
+🪨 سنگچی 20
+💣 مین روب 20
+🎲 بازی 20
 
-🟦 Dōz 20
-
-A two-player Tic-Tac-Toe style game.
-
-Players place their symbols on the board and attempt to create a line of three matching symbols.
-
-Game Information
-
-Property| Value
-👥 Players| 2
-🪙 Wager| 20 Nix Coins
-🎯 Objective| Create a line of three
+عدد "20" نشان‌دهنده مبلغ ورود بازی است.
 
 ---
 
-✂️ Sangchi 20
+❌ دوز 20
 
-A two-player Rock-Paper-Scissors game.
+🎯 کاربرد
 
-Players choose between:
+بازی دو نفره به سبک Tic-Tac-Toe.
 
-- 🪨 Rock
-- 📄 Paper
-- ✂️ Scissors
+دو بازیکن وارد بازی می‌شوند و باید تلاش کنند سه حرکت مشابه را در یک خط قرار دهند.
 
-Match Modes
+🪙 مبلغ بازی
 
-Players can choose the number of rounds:
+20 Nix Coins
+
+👥 تعداد بازیکنان
+
+2 Players
+
+🏆 هدف
+
+ساخت یک خط سه‌تایی.
+
+---
+
+🪨 سنگچی 20
+
+🎯 کاربرد
+
+بازی دو نفره سنگ، کاغذ، قیچی.
+
+بازیکنان می‌توانند تعداد راندهای بازی را انتخاب کنند.
+
+🔢 تعداد راند
 
 1 Round
 3 Rounds
 5 Rounds
 
-The player who wins the greater number of rounds wins the match.
+🪙 مبلغ بازی
 
-Game Information
+20 Nix Coins
 
-Property| Value
-👥 Players| 2
-🪙 Wager| 20 Nix Coins
-🔄 Rounds| 1 / 3 / 5
+🎮 روند بازی
 
----
+برای هر راند، بازیکن حرکت خود را از طریق پنل انتخاب می‌کند.
 
-💣 Mine Rub 20
-
-A two-player hidden-mine game.
-
-The game generates a hidden board containing 11 mines.
-
-Players reveal hidden positions and attempt to find mines.
-
-Finding a mine provides another opportunity to continue playing.
-
-The player with the better final result wins the match.
-
-Game Information
-
-Property| Value
-👥 Players| 2
-🪙 Wager| 20 Nix Coins
-💣 Mines| 11
+در پایان، بازیکنی که تعداد راندهای بیشتری را برده باشد، برنده بازی خواهد بود.
 
 ---
 
-🎮 Bāzi 20
+💣 مین روب 20
 
-A two-player automated game.
+🎯 کاربرد
 
-No special gameplay action is required from the players.
+یک بازی دو نفره مبتنی بر پیدا کردن مین‌ها.
 
-Once the second player joins the match, Self Nix automatically determines the winner.
+صفحه بازی شامل دکمه‌های مخفی است و تعدادی از آن‌ها دارای مین هستند.
 
-Game Information
+💣 تعداد مین
 
-Property| Value
-👥 Players| 2
-🪙 Wager| 20 Nix Coins
-🤖 Winner Selection| Automated
+11 Mines
 
----
+🪙 مبلغ بازی
 
-🏆 Statistics
+20 Nix Coins
 
-🪙 Coin Ranking
+🎯 مکانیزم
 
-Displays the Top 10 users with the highest Nix Coin balance.
+بازیکنان باید تلاش کنند مین‌های بیشتری پیدا کنند.
 
-Ranking
+هر مین پیداشده می‌تواند فرصت دیگری برای ادامه بازی ایجاد کند.
 
-1. User
-2. User
-3. User
-...
-10. User
-
-The ranking is based on the users' current Coin holdings.
+در پایان، بازیکنی که مین‌های بیشتری پیدا کرده باشد، برنده خواهد بود.
 
 ---
 
-🏆 Win Ranking
+🎲 بازی 20
 
-Displays the Top 10 users with the highest number of recorded game wins.
+🎯 کاربرد
 
-Ranking
+یک بازی دو نفره ساده و سریع.
 
-1. User
-2. User
-3. User
-...
-10. User
+پس از ورود بازیکن دوم، سیستم به‌صورت خودکار نتیجه بازی را تعیین می‌کند.
+
+🪙 مبلغ بازی
+
+20 Nix Coins
+
+👥 تعداد بازیکنان
+
+2 Players
+
+🎯 روند
+
+Player 1
+    +
+Player 2
+    ↓
+Automatic Result
 
 ---
+
+🏆 آمار و رتبه‌بندی
+
+🪙 آمار سکه
+
+🇮🇷 فارسی
+
+آمار سکه
+
+🇬🇧 English
+
+leaderboard
+
+"/" Slash
+
+/leaderboard
+
+🎯 کاربرد
+
+نمایش رتبه‌بندی کاربران بر اساس مقدار Nix Coin.
+
+📊 تعداد نمایش
+
+Top 10
+
+یعنی ۱۰ کاربر دارای بیشترین موجودی سکه نمایش داده می‌شوند.
+
+🧪 مثال
+
+آمار سکه
+
+یا:
+
+leaderboard
+
+یا:
+
+/leaderboard
+
+---
+
+🏆 آمار برد
+
+🇮🇷 فارسی
+
+آمار برد
+
+🇬🇧 English
+
+leaderboard_wins
+
+"/" Slash
+
+/leaderboard_wins
+
+🎯 کاربرد
+
+نمایش رتبه‌بندی کاربران بر اساس تعداد بردهای ثبت‌شده در بازی‌ها.
+
+📊 تعداد نمایش
+
+Top 10
+
+🧪 مثال
+
+آمار برد
+
+یا:
+
+leaderboard_wins
+
+یا:
+
+/leaderboard_wins
+
+---
+
+🔐 مدیریت
+
+بخش مدیریت Self Nix شامل قابلیت‌هایی است که برای مدیران و صاحبان سیستم در نظر گرفته می‌شوند.
 
 🔐 Administration
 
-«Administrative commands are intentionally not included in the current public command reference.»
+🚧 وضعیت
 
-The Administration section will be expanded in a future documentation update with the appropriate Admin and Owner commands and permission requirements.
+جزئیات کامل دستورات مدیریتی در نسخه عمومی این مستند در حال تکمیل است.
+
+Coming Later
+
+«دستورات مدیریتی تا زمان تکمیل مستندات عمومی، در این فایل منتشر نمی‌شوند.»
 
 ---
 
-🔒 Privacy & Source Code
+🧱 ساختار استاندارد دستور
 
-This repository contains public documentation, examples, and information about the Self Nix service.
+به‌صورت کلی، دستورات Self Nix یکی از ساختارهای زیر را دارند:
 
-The following are not included:
+بدون پارامتر
 
-- 🔒 Production source code
-- 🔑 Bot tokens
-- 🔐 Private credentials
-- 🗄️ Database credentials
-- ⚙️ Private production configuration
-- 🧩 Internal implementation details
-- 🛡️ Private security mechanisms
+<command>
 
-«Self Nix is proprietary software.»
+مثال:
 
-This repository is intended to document and introduce the public-facing functionality of Self Nix without exposing its private implementation.
+balance
+
+---
+
+با یک پارامتر
+
+<command> <parameter>
+
+مثال:
+
+transfer 50
+
+---
+
+با چند پارامتر
+
+<command> <parameter_1> <parameter_2>
+
+مثال:
+
+transfer 123 50
+
+---
+
+🔤 روش‌های اجرای دستورات
+
+هر دستور ممکن است در چند شکل در دسترس باشد.
+
+🇮🇷 فارسی
+
+موجودی
+
+🇬🇧 English
+
+balance
+
+"/" Slash Command
+
+/balance
+
+این سه حالت، در صورت پشتیبانی دستور، به یک قابلیت یکسان متصل هستند.
+
+---
+
+📋 مرجع سریع دستورات
+
+قابلیت| 🇮🇷 فارسی| 🇬🇧 انگلیسی| "/" Slash
+موجودی| "موجودی"| "balance"| "/balance"
+پروفایل| "پروفایل" / "حساب کاربری"| "profile"| "/profile"
+انتقال| "انتقال"| "transfer"| "/transfer"
+پنل| "پنل"| "panel"| "/panel"
+روزانه| "روزانه"| "daily"| "/daily"
+آمار سکه| "آمار سکه"| "leaderboard"| "/leaderboard"
+آمار برد| "آمار برد"| "leaderboard_wins"| "/leaderboard_wins"
+سطح| "سطح من"| "level"| "/level"
+
+---
+
+🧩 مرجع پارامترها
+
+پارامتر| نوع| توضیح
+"<user>"| User| کاربر مقصد یا کاربری که عملیات روی آن انجام می‌شود
+"<amount>"| Number| مقدار سکه یا مقدار عددی موردنیاز
+"<parameter>"| Variable| مقدار ورودی موردنیاز یک دستور
+
+مثال کامل
+
+transfer <user> <amount>
+
+نمونه واقعی:
+
+transfer 123456789 50
+
+---
+
+⚠️ خطاهای رایج
+
+❌ پارامتر ناقص
+
+transfer
+
+اگر دستور به دریافت‌کننده و مقدار نیاز داشته باشد، این ساختار کامل نیست.
+
+ساختار صحیح:
+
+transfer 123 50
+
+---
+
+❌ ترتیب اشتباه
+
+transfer 50 123
+
+ساختار صحیح:
+
+transfer 123 50
+
+---
+
+❌ استفاده از متن به جای مقدار عددی
+
+transfer 123 fifty
+
+در مواردی که مقدار سکه باید عددی باشد، مقدار باید به‌صورت عدد وارد شود.
+
+---
+
+💡 نکات مهم
+
+- نام فارسی و انگلیسی یک قابلیت می‌توانند معادل یکدیگر باشند.
+- استفاده از "/" برای نسخه Slash دستور است.
+- فاصله بین نام دستور و پارامترها اهمیت دارد.
+- پارامترها باید به ترتیب تعریف‌شده وارد شوند.
+- برای انتقال سکه، مقدار انتقال و دریافت‌کننده باید مشخص باشند.
+- انتقال سکه دارای 10٪ کارمزد است.
+- برخی قابلیت‌ها ممکن است بر اساس وضعیت حساب یا سطح دسترسی کاربر نمایش داده شوند.
+- دستورات مدیریتی در مستند عمومی فعلی منتشر نشده‌اند.
+- این فایل فقط دستورات عمومی و مستندشده Self Nix را پوشش می‌دهد.
+
+---
+
+🔗 Self Nix
+
+Self Nix یک سیستم Telegram-based برای مدیریت حساب، Nix Coin، Level، بازی‌ها و امکانات مرتبط با کاربران است.
+
+برای اطلاعات بیشتر:
+
+README.md
+FEATURES.md
+COIN_SYSTEM.md
+PERMISSIONS.md
+ARCHITECTURE.md
+
+---
+
+<p align="center">Self Nix • Command Reference
+
+Made by Tiam
+
+</p>
+```
